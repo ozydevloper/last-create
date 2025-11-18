@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Agenda {
+  id    String @unique @default(uuid())
+  judul String
+}
+
+model Kategori {
+  name String @unique
+}
+
+model Topik {
+  name String @unique
+}
+
+model Kalangan {
+  name String @unique
+}
