@@ -9,18 +9,98 @@ datasource db {
 }
 
 model Agenda {
-  id    String @unique @default(uuid())
-  judul String
+  id        String   @unique @default(uuid())
+  poster    String[]
+  judul     String
+  deskripsi String
+  tanggal   DateTime
+  waktu     String
+
+  pelaksanaan   String[]
+  pembicara     String[]
+  penyelenggara String[]
+
+  kategori_relation Kategori @relation(fields: [kategori], references: [name])
+  kategori          String
+  topik_relation    Topik    @relation(fields: [topik], references: [name])
+  topik             String
+  biaya_relation    Biaya    @relation(fields: [biaya], references: [name])
+  biaya             String
+  kalangan_relation Kalangan @relation(fields: [kalangan], references: [name])
+  kalangan          String
+  kota_relation     Kota?    @relation(fields: [kota], references: [name])
+  kota              String?
+
+  user_relation User   @relation(fields: [userId], references: [id])
+  userId        String
 }
 
 model Kategori {
-  name String @unique
+  name   String   @unique
+  agenda Agenda[]
+
+  preferensis Preferensi[]
 }
 
 model Topik {
-  name String @unique
+  name   String   @unique
+  agenda Agenda[]
+
+  preferensis Preferensi[]
+}
+
+model Biaya {
+  name        String       @unique
+  agenda      Agenda[]
+  preferensis Preferensi[]
 }
 
 model Kalangan {
-  name String @unique
+  name        String       @unique
+  agenda      Agenda[]
+  preferensis Preferensi[]
+}
+
+model Kota {
+  name        String       @unique
+  agenda      Agenda[]
+  preferensis Preferensi[]
+}
+
+model User {
+  id    String @unique @default(uuid())
+  email String @unique
+  name  String
+  image String
+
+  nomor_hp String?
+
+  agendaId Agenda[]
+
+  role_relation RoleUser? @relation(fields: [role], references: [name])
+  role          String?
+
+  preferensiId Preferensi?
+}
+
+model Preferensi {
+  id            String  @unique @default(uuid())
+  user_relation User?   @relation(fields: [userId], references: [id])
+  userId        String? @unique
+
+  kategori_relation Kategori? @relation(fields: [kategori], references: [name])
+  kategori          String?
+  topik_relation    Topik?    @relation(fields: [topik], references: [name])
+  topik             String?
+  kota_relation     Kota?     @relation(fields: [kota], references: [name])
+  kota              String?
+  biaya_relation    Biaya?    @relation(fields: [biaya], references: [name])
+  biaya             String?
+  kalangan_relation Kalangan? @relation(fields: [kalanganName], references: [name])
+  kalanganName      String?
+}
+
+model RoleUser {
+  name  String @unique
+  users User[]
 }
