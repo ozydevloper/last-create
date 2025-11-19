@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${outfit.variable} font-sans`}>
+      <body className={`${outfit.variable} font-sans px-3`}>
         <Toaster />
         <SessionProvider>{children}</SessionProvider>
       </body>

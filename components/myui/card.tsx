@@ -15,13 +15,16 @@ export const CardSubTitle = ({
 export const CardParent = ({
   children,
   className,
+  onClick,
 }: {
   children?: React.ReactNode;
   className?: ClassNameValue;
+  onClick?: React.FC;
 }) => {
   return (
     <div
-      className={`bg-background p-2 border-2 shadow-xl rounded-md w-full md:max-w-xl mx-3 flex flex-col ${className}`}
+      onClick={onClick}
+      className={`bg-background p-2 border-2 shadow-md rounded-md w-full md:max-w-xl flex flex-col ${className}`}
     >
       {children}
     </div>
