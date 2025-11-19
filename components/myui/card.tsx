@@ -24,7 +24,7 @@ export const CardParent = ({
   return (
     <div
       onClick={onClick}
-      className={`bg-background p-2 border-2 shadow-md rounded-md w-full md:max-w-xl flex flex-col ${className}`}
+      className={`bg-background p-2 border-2 shadow-sm rounded-md w-full md:max-w-xl flex flex-col ${className}`}
     >
       {children}
     </div>

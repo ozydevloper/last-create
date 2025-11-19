@@ -1,20 +1,32 @@
 import Image from "next/image";
 import { CardParent } from "../card";
 import { Badge } from "../badge";
+import { useState } from "react";
 
 export const Post = () => {
+  const [preview, setPreview] = useState<boolean>(false);
   return (
-    <CardParent className="bg-primary-foreground gap-y-1 select-none">
+    <CardParent className="bg-primary-foreground gap-y-1 select-none  transition-all ease-in-out duration-300">
       <div className="w-full flex items-center justify-between text-center text-xs font-semibold text-primary">
         <p>Senin, 07 September 2025</p>
         <p>20:00 - 21:00 WIB</p>
       </div>
 
       <div className="w-full flex flex-col md:flex-row">
-        <CardParent className="overflow-hidden relative h-52 min-h-52 bg-primary-foreground md:w-48 z-5">
-          <Image src={"/my.jpeg"} alt="..." fill className="object-contain" />
+        <CardParent className="overflow-hidden relative h-52 min-h-52 bg-primary-foreground md:w-48 z-5 ">
+          <div
+            onClick={() => setPreview(!preview)}
+            className={`w-full h-full  ${preview && "inset-0 fixed bg-black/35 z-50"}`}
+          >
+            <Image
+              src={"/my.jpeg"}
+              alt="..."
+              fill
+              className="object-contain "
+            />
+          </div>
         </CardParent>
-        <CardParent className="gap-y-1 justify-between active:scale-95  transition-all ease-in-out duration-200 z-10">
+        <CardParent className="gap-y-1 justify-between active:scale-95  transition-all ease-in-out duration-300 hover:bg-background/45">
           <div className="flex flex-row gap-x-2 items-center justify-between">
             <span className="text-sm font-bold whitespace-pre-wrap ">
               Wisatawan telah disediakakn i n oleh
