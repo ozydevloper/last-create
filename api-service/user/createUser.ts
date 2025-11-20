@@ -11,5 +11,11 @@ export const createUser = async (
       email: user.email,
       image: user.image,
     },
+    select: {
+      name: true,
+      email: true,
+      image: true,
+      role: true,
+    },
   });
 };

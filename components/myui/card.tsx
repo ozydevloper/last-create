@@ -19,7 +19,7 @@ export const CardParent = ({
 }: {
   children?: React.ReactNode;
   className?: ClassNameValue;
-  onClick?: React.FC;
+  onClick?: () => void;
 }) => {
   return (
     <div

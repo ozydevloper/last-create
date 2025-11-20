@@ -2,31 +2,49 @@ import Image from "next/image";
 import { CardParent } from "../card";
 import { Badge } from "../badge";
 import { useState } from "react";
+import { useModeZustand } from "@/lib/zustand";
+import { Portal } from "../portal";
 
 export const Post = () => {
   const [preview, setPreview] = useState<boolean>(false);
+  const setdDatadetail = useModeZustand((state) => state.setDataDetail);
+
   return (
     <CardParent className="bg-primary-foreground gap-y-1 select-none  transition-all ease-in-out duration-300">
-      <div className="w-full flex items-center justify-between text-center text-xs font-semibold text-primary">
-        <p>Senin, 07 September 2025</p>
-        <p>20:00 - 21:00 WIB</p>
-      </div>
-
-      <div className="w-full flex flex-col md:flex-row">
-        <CardParent className="overflow-hidden relative h-52 min-h-52 bg-primary-foreground md:w-48 z-5 ">
+      {preview && (
+        <Portal>
           <div
-            onClick={() => setPreview(!preview)}
-            className={`w-full h-full  ${preview && "inset-0 fixed bg-black/35 z-50"}`}
+            onClick={() => setPreview(false)}
+            className="inset-0 fixed h-dvh bg-black/50 flex items-center justify-center z-50"
           >
             <Image
               src={"/my.jpeg"}
               alt="..."
               fill
-              className="object-contain "
+              className={`object-contain `}
             />
           </div>
+        </Portal>
+      )}
+      <div className="w-full flex items-center justify-between text-center text-xs font-semibold text-primary">
+        <p>Senin, 07 September 2025</p>
+        <p>20:00 - 21:00 WIB</p>
+      </div>
+
+      <div className="w-full flex flex-col md:flex-row z-0">
+        <CardParent className="overflow-hidden relative h-52 min-h-52 bg-primary-foreground md:w-48">
+          <Image
+            onClick={() => setPreview(true)}
+            src={"/my.jpeg"}
+            alt="..."
+            fill
+            className={`object-contain `}
+          />
         </CardParent>
-        <CardParent className="gap-y-1 justify-between active:scale-95  transition-all ease-in-out duration-300 hover:bg-background/45">
+        <CardParent
+          onClick={() => setdDatadetail({})}
+          className="gap-y-1 justify-between active:scale-95  transition-all ease-in-out duration-300 hover:bg-background/45"
+        >
           <div className="flex flex-row gap-x-2 items-center justify-between">
             <span className="text-sm font-bold whitespace-pre-wrap ">
               Wisatawan telah disediakakn i n oleh

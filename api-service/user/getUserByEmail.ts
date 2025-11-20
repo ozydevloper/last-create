@@ -6,5 +6,11 @@ export const getUserByEmail = async (emailUser: string | undefined) => {
     where: {
       email: emailUser,
     },
+    select: {
+      email: true,
+      image: true,
+      name: true,
+      role: true,
+    },
   });
 };

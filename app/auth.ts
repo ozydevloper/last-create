@@ -1,27 +1,33 @@
 import { createUser } from "@/api-service/user/createUser";
 import { getUserByEmail } from "@/api-service/user/getUserByEmail";
 import NextAuth, { User } from "next-auth";
+import { JWT } from "next-auth/jwt";
 import Google from "next-auth/providers/google";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [Google],
   callbacks: {
-    signIn: async ({ user }: { user: User }) => {
-      const isExist = await getUserByEmail(user?.email ?? "");
-
-      if (isExist) {
-        console.log("ada");
-      } else {
-        if (user.id && user.email && user.image && user.name) {
-          await createUser({
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            image: user.image,
+    jwt: async ({ user, token }: { user: User; token: JWT }) => {
+      if (user) {
+        let userDb = await getUserByEmail(user.email!);
+        if (!userDb) {
+          userDb = await createUser({
+            email: user.email!,
+            id: user.id!,
+            image: user.image ?? "unknown",
+            name: user.name!,
           });
         }
+        console.log(userDb);
+        token.role = userDb.role;
       }
-      return true;
+      return token;
+    },
+    session: ({ session, token }) => {
+      if (session.user) {
+        session.user.role = token.role;
+      }
+      return session;
     },
   },
 });

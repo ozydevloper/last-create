@@ -16,7 +16,7 @@ const ButtonNav = ({
   return (
     <div
       onClick={() => redirect(redirectUrl)}
-      className="w-full p-1 text-md border-y active:bg-primary-foreground active:bg-primary transition-all ease-in-out duration-200 active:text-primary"
+      className="w-full p-1 text-md border-y active:bg-primary-foreground  transition-all ease-in-out duration-200 active:text-primary"
     >
       {children}
     </div>
@@ -31,6 +31,7 @@ export const MenuBar = () => {
     const fetchSession = async () => {
       const session = await getSession();
       setClientSession(session);
+      console.log(session);
     };
     fetchSession();
   }, []);
@@ -47,8 +48,14 @@ export const MenuBar = () => {
         </Badge>
       </div>
       <div
-        className={`${showMenu ? "block" : "hidden"} w-full py-5 rounded-md flex flex-col`}
+        className={`${showMenu ? "block" : "hidden"} w-full py-2 rounded-md flex flex-col`}
       >
+        {!!clientSession && (
+          <ButtonNav redirectUrl="/profile">Profile</ButtonNav>
+        )}
+        {!!clientSession && clientSession.user.role == "ADMIN" && (
+          <ButtonNav redirectUrl="/admin">Admin</ButtonNav>
+        )}
         {!!clientSession ? (
           <ButtonNav redirectUrl="/logout">Logout</ButtonNav>
         ) : (
