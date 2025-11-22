@@ -3,7 +3,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { SessionProvider } from "next-auth/react";
-
+import Providers from "./providers";
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
@@ -23,7 +23,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${outfit.variable} font-sans px-3`}>
         <Toaster />
-        <SessionProvider>{children}</SessionProvider>
+        <SessionProvider>
+          <Providers>{children}</Providers>
+        </SessionProvider>
       </body>
     </html>
   );

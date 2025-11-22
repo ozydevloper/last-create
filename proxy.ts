@@ -14,11 +14,4 @@ export default auth((request: NextAuthRequest) => {
     if (request.nextUrl.pathname === "/login")
       return NextResponse.redirect(new URL("/", request.url));
   }
-
-  if (request.nextUrl.pathname.startsWith("/api/query")) {
-    const token = request.headers.get("nothing-to-see");
-    if (!!!token) {
-      return NextResponse.json({ error: "missing signatur" });
-    }
-  }
 });

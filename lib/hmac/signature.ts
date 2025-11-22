@@ -46,5 +46,15 @@ export async function apiFetch(input: RequestInfo, init?: RequestInit) {
     ...(init?.headers || {}),
   };
 
-  return fetch(input, { ...init, headers });
+  return await fetch(input, { ...init, headers });
+}
+
+export function middlewareSignature(signature: string | null): boolean {
+  if (!!!signature) {
+    return false;
+  }
+  if (!!signature && !verifySignature(signature)!) {
+    return false;
+  }
+  return true;
 }

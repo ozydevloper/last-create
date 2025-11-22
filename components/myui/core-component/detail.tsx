@@ -14,8 +14,8 @@ export const Detail = ({}) => {
         <CardParent className="h-fit flex flex-col gap-y-2 bg-primary-foreground">
           <Badge
             onClick={() => setDataDetail(null)}
-            color="red"
-            className="flex items-center justify-center sticky top-2 active:bg-red-200"
+            color="blue"
+            className="flex items-center justify-center sticky top-2 z-50"
           >
             <ArrowUp size={15} />
           </Badge>

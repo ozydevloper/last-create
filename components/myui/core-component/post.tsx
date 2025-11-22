@@ -43,7 +43,7 @@ export const Post = () => {
         </CardParent>
         <CardParent
           onClick={() => setdDatadetail({})}
-          className="gap-y-1 justify-between active:scale-95  transition-all ease-in-out duration-300 hover:bg-background/45"
+          className="gap-y-1 justify-between active:scale-98  transition-all ease-in-out duration-300 hover:bg-background/45"
         >
           <div className="flex flex-row gap-x-2 items-center justify-between">
             <span className="text-sm font-bold whitespace-pre-wrap ">

@@ -68,10 +68,10 @@ model Kota {
 }
 
 model User {
-  id    String @unique @default(uuid())
-  email String @unique
+  id    String  @unique @default(uuid())
+  email String  @unique
   name  String
-  image String
+  image String?
 
   nomor_hp String?
 
