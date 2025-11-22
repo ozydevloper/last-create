@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${outfit.variable} font-sans px-3`}>
-        <Toaster />
+        <Toaster duration={5000} richColors={true} />
         <SessionProvider>
           <Providers>{children}</Providers>
         </SessionProvider>

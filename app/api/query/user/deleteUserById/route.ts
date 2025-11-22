@@ -1,4 +1,4 @@
-import { updateUserRole } from "@/api-service/user/updateRoleUser";
+import { deleteUserById } from "@/api-service/user/deleteUserById";
 import { middlewareSignature } from "@/lib/hmac/signature";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -7,10 +7,11 @@ export async function POST(req: NextRequest) {
     if (!middlewareSignature(req.headers.get("nothing-to-see"))) {
       return NextResponse.json({ data: "Request ga bener" });
     }
-    const { id, role } = await req.json();
+    const { id } = await req.json();
 
-    const { email } = await updateUserRole(id, role);
-    return NextResponse.json({ data: `Berhasil update, ${email}` });
+    console.log(id);
+    const { email } = await deleteUserById(id);
+    return NextResponse.json({ data: `Berhasil menghapus, ${email}` });
   } catch (err) {
     return NextResponse.json({ data: JSON.stringify(err) });
   }

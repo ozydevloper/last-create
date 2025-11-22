@@ -17,6 +17,6 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ data: "Data tidak ditemukan" });
     return NextResponse.json({ data: allUser });
   } catch (err) {
-    return NextResponse.json({ data: err });
+    return NextResponse.json({ data: JSON.stringify(err) });
   }
 }
