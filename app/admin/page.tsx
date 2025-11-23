@@ -13,11 +13,8 @@ export default function Page() {
           <Badge onClick={() => redirect("/admin/user")} color="blue">
             User Tabel
           </Badge>
-          <Badge onClick={() => redirect("/admin/user")} color="blue">
-            User Tabel
-          </Badge>
-          <Badge onClick={() => redirect("/admin/user")} color="blue">
-            User Tabel
+          <Badge onClick={() => redirect("/admin/tag")} color="blue">
+            Tag Tabel
           </Badge>
         </CardParent>
       </CardParent>
