@@ -24,7 +24,7 @@ import { toast } from "sonner";
 export default function Page() {
   const [isEdit, setIsEdit] = useState<null | UserType>(null);
   const [newRole, setNewRole] = useState<{ id: string; role: string } | null>(
-    null,
+    null
   );
   const queryClient = useQueryClient();
 
@@ -79,9 +79,9 @@ export default function Page() {
     },
   });
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return "Loading...";
 
-  if (error) return "An error has occurred: " + error.message;
+  if (error) return "Terjadi error: " + error.message;
 
   if (!Array.isArray(data?.data)) return <div>{data?.data}</div>;
 
@@ -103,7 +103,9 @@ export default function Page() {
       </Badge>
       <Badge color="default">User Tabel</Badge>
       <div
-        className={`z-50 inset-0 h-dvh bg-black/50 fixed ${isEdit ? "translate-y-0" : "-translate-y-full"} translate-y-fullnsition-all ease-in-out duration-300 flex justify-center overflow-y-scroll`}
+        className={`z-50 inset-0 h-dvh bg-black/50 fixed ${
+          isEdit ? "translate-y-0" : "-translate-y-full"
+        } translate-y-fullnsition-all ease-in-out duration-300 flex justify-center overflow-y-scroll`}
       >
         <CardParent className="justify-center gap-y-2 h-fit">
           <Badge
@@ -225,56 +227,72 @@ export default function Page() {
                   </td>
                   <td>
                     <CardParent
-                      className={` ${i % 2 == 0 && "bg-primary-foreground"} flex-row whitespace-nowrap min-w-25 max-w-25 overflow-x-auto`}
+                      className={` ${
+                        i % 2 == 0 && "bg-primary-foreground"
+                      } flex-row whitespace-nowrap min-w-25 max-w-25 overflow-x-auto`}
                     >
                       {e.id}
                     </CardParent>
                   </td>
                   <td>
                     <CardParent
-                      className={` ${i % 2 == 0 && "bg-primary-foreground"} flex-row whitespace-nowrap max-w-25 overflow-x-auto min-w-25 `}
+                      className={` ${
+                        i % 2 == 0 && "bg-primary-foreground"
+                      } flex-row whitespace-nowrap max-w-25 overflow-x-auto min-w-25 `}
                     >
                       {e.role}
                     </CardParent>
                   </td>
                   <td>
                     <CardParent
-                      className={` ${i % 2 == 0 && "bg-primary-foreground"} flex-row whitespace-nowrap overflow-x-auto min-w-25 `}
+                      className={` ${
+                        i % 2 == 0 && "bg-primary-foreground"
+                      } flex-row whitespace-nowrap overflow-x-auto min-w-25 `}
                     >
                       {e.email}
                     </CardParent>
                   </td>
                   <td>
                     <CardParent
-                      className={` ${i % 2 == 0 && "bg-primary-foreground"} flex-row whitespace-nowrap max-w-25 overflow-x-auto min-w-25 `}
+                      className={` ${
+                        i % 2 == 0 && "bg-primary-foreground"
+                      } flex-row whitespace-nowrap max-w-25 overflow-x-auto min-w-25 `}
                     >
                       {e.name}
                     </CardParent>
                   </td>
                   <td>
                     <CardParent
-                      className={` ${i % 2 == 0 && "bg-primary-foreground"} flex-row whitespace-nowrap max-w-25 overflow-x-auto min-w-25 `}
+                      className={` ${
+                        i % 2 == 0 && "bg-primary-foreground"
+                      } flex-row whitespace-nowrap max-w-25 overflow-x-auto min-w-25 `}
                     >
                       {e.nomor_hp}
                     </CardParent>
                   </td>
                   <td>
                     <CardParent
-                      className={` ${i % 2 == 0 && "bg-primary-foreground"} flex-row whitespace-nowrap max-w-25 overflow-x-auto min-w-25 `}
+                      className={` ${
+                        i % 2 == 0 && "bg-primary-foreground"
+                      } flex-row whitespace-nowrap max-w-25 overflow-x-auto min-w-25 `}
                     >
                       {e.image}
                     </CardParent>
                   </td>
                   <td>
                     <CardParent
-                      className={` ${i % 2 == 0 && "bg-primary-foreground"} flex-row whitespace-nowrap max-w-25 overflow-x-auto min-w-25 `}
+                      className={` ${
+                        i % 2 == 0 && "bg-primary-foreground"
+                      } flex-row whitespace-nowrap max-w-25 overflow-x-auto min-w-25 `}
                     >
                       {e.agendaId?.length}
                     </CardParent>
                   </td>
                   <td>
                     <CardParent
-                      className={` ${i % 2 == 0 && "bg-primary-foreground"} flex-row whitespace-nowrap max-w-25 overflow-x-auto min-w-25 `}
+                      className={` ${
+                        i % 2 == 0 && "bg-primary-foreground"
+                      } flex-row whitespace-nowrap max-w-25 overflow-x-auto min-w-25 `}
                     >
                       {e.preferensiId?.id}
                     </CardParent>
