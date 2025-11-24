@@ -8,7 +8,9 @@ export const Detail = ({}) => {
   const setDataDetail = useModeZustand((state) => state.setDataDetail);
   return (
     <div
-      className={`fixed inset-0 bg-black/50 z-50 h-dvh flex justify-center p-2 overflow-y-scroll ${dataDetail !== null ? "translate-y-0" : "-translate-y-full"} transition-all ease-in-out duration-200`}
+      className={`fixed inset-0 bg-black/50 z-50 h-dvh flex justify-center p-2 overflow-y-scroll ${
+        dataDetail !== null ? "translate-y-0" : "-translate-y-full"
+      } transition-all ease-in-out duration-200`}
     >
       {dataDetail !== null && (
         <CardParent className="h-fit flex flex-col gap-y-2 bg-primary-foreground">
@@ -58,17 +60,28 @@ export const Detail = ({}) => {
               <div className="flex flex-col gap-y-0.5">
                 <div className="w-full flex items-start text-start justify-start gap-x-1">
                   <CardSubTitle className="font-bold text-xs">
-                    Tanggal:
+                    Kota:
                   </CardSubTitle>
-                  <p className="text-xs font-normal">
-                    Jumat, 08 September 2007
-                  </p>
+                  <p className="text-xs font-normal">Jakarta Selatan</p>
                 </div>
                 <div className="w-full flex items-start text-start justify-start gap-x-1">
                   <CardSubTitle className="font-bold text-xs">
-                    Waktu:
+                    Lokasi:
                   </CardSubTitle>
-                  <p className="text-xs font-normal">11:00 -12:00 WIB</p>
+                  <a
+                    href="http://google.com"
+                    className="text-xs font-normal underline"
+                  >
+                    Masjid AOl, Islamic center{" "}
+                  </a>
+                </div>
+                <div className="w-full flex items-start text-start justify-start gap-x-1">
+                  <CardSubTitle className="font-bold text-xs">
+                    Tanggal:
+                  </CardSubTitle>
+                  <p className="text-xs font-normal">
+                    Jumat, 08 September 2025
+                  </p>
                 </div>
                 <div className="w-full flex items-start text-start justify-start gap-x-1">
                   <CardSubTitle className="font-bold text-xs">
@@ -84,48 +97,61 @@ export const Detail = ({}) => {
                 </div>
                 <div className="w-full flex items-start text-start justify-start gap-x-1">
                   <CardSubTitle className="font-bold text-xs">
-                    Pembicara:
+                    Waktu Berlangsung:
                   </CardSubTitle>
-                  <p className="text-xs font-normal">
-                    Pembicara 1, Pembicara 2, Pembicara 3, Pembicara 4
-                  </p>
+                  <p className="text-xs font-normal">10:00 - 14:00 WIB</p>
                 </div>
-                <div className="w-full flex items-start text-start justify-start gap-x-1">
-                  <CardSubTitle className="font-bold  text-xs">
-                    Penyelenggara:
-                  </CardSubTitle>
-                  <p className="text-xs font-normal">
-                    Penyelenggara 1, Penyelenggara 2
-                  </p>
+                <div className="flex flex-wrap gap-1 mt-2">
+                  <div className="max-w-fit flex flex-col items-start text-start justify-start gap-x-1">
+                    <CardSubTitle className="font-bold text-xs">
+                      Waktu Kegitan:
+                    </CardSubTitle>
+                    <CardParent className="p-1 text-xs max-w-fit">
+                      <p className="whitespace-pre-line">
+                        11:00 : Al Kahfian {"\n"}12:00 : Diskusi {"\n"}13:00 :
+                        Tanya Jawab 3{" "}
+                      </p>
+                    </CardParent>
+                  </div>
+                  <div className="max-w-fit flex flex-col items-start text-start justify-start gap-x-1">
+                    <CardSubTitle className="font-bold text-xs">
+                      Bersama:
+                    </CardSubTitle>
+                    <CardParent className="p-1 text-xs max-w-fit">
+                      <p className="whitespace-pre-line">
+                        Pembicara 1 {"\n"}Pembicara 2 {"\n"}Pembicara 3
+                      </p>
+                    </CardParent>
+                  </div>
+                  <div className="max-w-fit flex flex-col items-start text-start justify-start gap-x-1">
+                    <CardSubTitle className="font-bold text-xs">
+                      Host:
+                    </CardSubTitle>
+                    <CardParent className="p-1 text-xs max-w-fit">
+                      <p className="whitespace-pre-line">
+                        Host 1 {"\n"}Host 2 {"\n"}Host 3
+                      </p>
+                    </CardParent>
+                  </div>
                 </div>
               </div>
             </CardParent>
-            <CardParent>
-              <CardSubTitle className="w-full text-start text-xs font-bold">
-                Pelaksanaan
-              </CardSubTitle>
-              <div className="w-full flex text-start items-start justify-start gap-x-1">
-                <CardSubTitle className="font-bold text-xs">Kota:</CardSubTitle>
-                <p className="text-xs font-normal">Jakarta Utara</p>
-              </div>
-              <div className="w-full flex text-start items-start justify-start gap-x-1">
-                <CardSubTitle className="font-bold text-xs">
-                  Lokasi:
-                </CardSubTitle>
-                <p className="text-xs font-normal">Podium Jakarta</p>
-              </div>
-              <div className="w-full flex text-start items-start justify-start gap-x-1">
-                <CardSubTitle className="font-bold text-xs">
-                  Alamat:
-                </CardSubTitle>
-                <a
-                  href={"https://google.com"}
-                  className="text-xs font-normal text-priamry underline-offset-1 underline active:text-primary transition-colors ease-in-out duration-200"
-                >
-                  Jln Mayjen Sutoyo
-                </a>
-              </div>
+            <CardParent className="mt-1 gap-y-2">
+              <CardSubTitle className="font-bold text-xs ">Note</CardSubTitle>
+              <p className="whitespace-pre-line text-xs font-normal">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+                commodo ligula eget dolor. Aenean massa. Cum sociis natoque
+                penatibus et magnis dis parturient montes, nascetur ridiculus
+                mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
+                quis, sem. Nulla consequat massa quis enim. Donec pede justo,
+              </p>
             </CardParent>
+            <div className="max-w-fit mt-2">
+              <CardParent className="flex-row gap-x-1">
+                <Badge color="default">Kategori</Badge>
+                <Badge color="default">Topik</Badge>
+              </CardParent>
+            </div>
           </CardParent>
         </CardParent>
       )}
