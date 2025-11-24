@@ -1,6 +1,5 @@
 "use client";
 
-import Loading from "@/app/loading";
 import { Badge } from "@/components/myui/badge";
 import { CardParent, CardSubTitle } from "@/components/myui/card";
 import {
@@ -15,7 +14,7 @@ import { apiFetch } from "@/lib/hmac/signature";
 import { UserType } from "@/types/user";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { ArrowUp, EllipsisVertical, Plus } from "lucide-react";
+import { ArrowUp, EllipsisVertical } from "lucide-react";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { useState } from "react";

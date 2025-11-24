@@ -16,7 +16,7 @@ export default function Page() {
           <Badge onClick={() => redirect("/admin/tag")} color="blue">
             Tag Tabel
           </Badge>
-          <Badge onClick={() => redirect("/admin/tag")} color="blue">
+          <Badge onClick={() => redirect("/admin/agenda")} color="blue">
             Agenda Tabel
           </Badge>
         </CardParent>
